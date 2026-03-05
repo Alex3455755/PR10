@@ -43,7 +43,7 @@
 					<input name="_password" type="password" placeholder="" onkeypress="return PressToEnter(event)"/>
 					<div class = "sub-name">Повторите пароль:</div>
 					<input name="_passwordCopy" type="password" placeholder="" onkeypress="return PressToEnter(event)"/>
-					
+					<center><div class="g-recaptcha" data-sitekey="6LdU14AsAAAAAA_U4ZNxiBxRzjVMFp0zR4cXqHyj"></div></center>
 					<a href="login.php">Вернуться</a>
 					<input type="button" class="button" value="Зайти" onclick="RegIn()" style="margin-top: 0px;"/>
 					<img src = "img/loading.gif" class="loading" style="margin-top: 0px;"/>
@@ -65,7 +65,11 @@
 				var _login = document.getElementsByName("_login")[0].value;
 				var _password = document.getElementsByName("_password")[0].value;
 				var _passwordCopy = document.getElementsByName("_passwordCopy")[0].value;
-				
+				var captcha = grecaptcha.getResponse();
+				if(captcha.length == 0) {
+					alert("Пройди проверку");
+					return;
+				}
 				if(_login != "") {
 					if(_password != "") {
 						if(_password == _passwordCopy) {
@@ -75,6 +79,7 @@
 							var data = new FormData();
 							data.append("login", _login);
 							data.append("password", _password);
+							data.append('g-recaptcha-response', captcha);
 							
 							// AJAX запрос
 							$.ajax({
@@ -95,7 +100,7 @@
 										loading.style.display = "none";
 										button.className = "button";
 									} else {
-										location.reload();
+										// location.reload();
 										loading.style.display = "none";
 										button.className = "button";
 									}
@@ -129,5 +134,6 @@
 			}
 			
 		</script>
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</body>
 </html>
