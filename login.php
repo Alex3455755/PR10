@@ -41,7 +41,7 @@
 					<input name="_login" type="text" placeholder="" onkeypress="return PressToEnter(event)"/>
 					<div class = "sub-name">Пароль:</div>
 					<input name="_password" type="password" placeholder="" onkeypress="return PressToEnter(event)"/>
-					
+					<center><div class="g-recaptcha" data-sitekey="6LdU14AsAAAAAA_U4ZNxiBxRzjVMFp0zR4cXqHyj"></div></center>
 					<a href="regin.php">Регистрация</a>
 					<br><a href="recovery.php">Забыли пароль?</a>
 					<input type="button" class="button" value="Войти" onclick="LogIn()"/>
@@ -63,12 +63,18 @@
 				
 				var _login = document.getElementsByName("_login")[0].value;
 				var _password = document.getElementsByName("_password")[0].value;
+				var captcha = grecaptcha.getResponse();
+				if(captcha.length == 0){
+					alert("Введите капчу");
+					return;
+				}
 				loading.style.display = "block";
 				button.className = "button_diactive";
 				
 				var data = new FormData();
 				data.append("login", _login);
 				data.append("password", _password);
+				data.append('g-recaptcha-response', captcha);
 				
 				// AJAX запрос
 				$.ajax({
@@ -118,6 +124,6 @@
 			}
 			
 		</script>
-		
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</body>
 </html>
