@@ -41,7 +41,7 @@
 					<input name="_login" type="text" placeholder="" onkeypress="return PressToEnter(event)"/>
 					<div class = "sub-name">Пароль:</div>
 					<input name="_password" type="password" placeholder="" onkeypress="return PressToEnter(event)"/>
-					<center><div class="g-recaptcha" data-sitekey="6LdU14AsAAAAAA_U4ZNxiBxRzjVMFp0zR4cXqHyj"></div></center>
+					<center><div class="g-recaptcha" data-sitekey="6Lc7bIEsAAAAAJ_VkOnWWWoUf505nEXp1JMDXzCq"></div></center>
 					<a href="regin.php">Регистрация</a>
 					<br><a href="recovery.php">Забыли пароль?</a>
 					<input type="button" class="button" value="Войти" onclick="LogIn()"/>

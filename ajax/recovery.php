@@ -16,7 +16,7 @@
 		echo "Не прошли капчу";
 		exit;
 	}
-	$Secret = "6Ld3hVEsAAAAAK_afY6r-oTeFFdrDD29KRZELCjW";
+	$Secret = "6Lc7bIEsAAAAAGN_83S_qTi1-y5h0xi5xy5qzCtV";
 	$Recaptcha = new \ReCaptcha\ReCaptcha($Secret);
 	$Response = $Recaptcha->verify($_POST["g-recaptcha-response"], $_SERVE['REMOTE_ADDR']);
 	if($Response->isSuccess()) {

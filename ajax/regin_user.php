@@ -5,7 +5,6 @@
 	
 	$login = $_POST['login'];
 	$password = $_POST['password'];
-	$password = password_hash($password,PASSWORD_DEFAULT);
 	
 	// ищем пользователя
 	$query_user = $mysqli->query("SELECT * FROM `users` WHERE `login`='".$login."'");
@@ -18,7 +17,7 @@
 			echo "Не прошли капчу";
 			exit;
 		}
-		$Secret = "6LdU14AsAAAAAGY4UbPTdmKx05nrVWPhIk8k4oaD";
+		$Secret = "6Lc7bIEsAAAAAGN_83S_qTi1-y5h0xi5xy5qzCtV";
 		$Recaptcha = new \ReCaptcha\ReCaptcha($Secret);
 
 		$Response = $Recaptcha->verify($_POST["g-recaptcha-response"], $_SERVER['REMOTE_ADDR']);
